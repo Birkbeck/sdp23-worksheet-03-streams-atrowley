@@ -16,6 +16,7 @@ public class Outline {
   public static void question1() {
     List<String> words = getList();
     System.out.println("1: ");
+    getList().stream().map(s->"  "+s).forEach(System.out::println);
     // YOUR CODE
   }
 
@@ -25,6 +26,7 @@ public class Outline {
   public static void question2() {
     List<String> words = getList();
     System.out.println("2: ");
+    getList().stream().forEach(System.out::println);
     // YOUR CODE
   }
 
@@ -37,9 +39,25 @@ public class Outline {
   // s -> (s.length() % 2) == 0 (strings of even length).
 
   public static void question3() {
+    // YOUR CODE
+
     List<String> words = getList();
     System.out.println("3:");
-    // YOUR CODE
+    List<String> l1 = words.stream()
+            .filter(s -> s.length() < 4)
+            .collect(Collectors.toList());
+
+    List<String> l2 = words.stream()
+            .filter(s -> s.contains("b"))
+            .collect(Collectors.toList());
+
+    List<String> l3 = words.stream()
+            .filter(s -> (s.length() % 2) == 0)
+            .collect(Collectors.toList());
+
+    System.out.println(l1);
+    System.out.println(l2);
+    System.out.println(l3);
   }
 
 
@@ -120,6 +138,10 @@ public class Outline {
 
   public static void main(String... args) { // varargs alternative to String[]
     question1();
+    question2();
+    question3();
+    question4();
+    question5();
 
   }
 }
