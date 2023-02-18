@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -72,7 +73,23 @@ public class Outline {
   public static void question4() {
     List<String> words = getList();
     System.out.println("4:");
+
     // YOUR CODE
+    List<String> l1 = words.stream()
+            .map(s -> s + "!")
+            .collect(Collectors.toList());
+
+    List<String> l2 = words.stream()
+            .map(s -> s.replace("i", "eye"))
+            .collect(Collectors.toList());
+
+    List<String> l3 = words.stream()
+            .map(String::toUpperCase)
+            .collect(Collectors.toList());
+
+    System.out.println(l1);
+    System.out.println(l2);
+    System.out.println(l3);
   }
 
 
@@ -85,6 +102,30 @@ public class Outline {
     List<String> words = getList();
     System.out.println("5a:");
     // YOUR CODE
+
+    words.stream()
+            .map(String::toUpperCase)
+            .filter(s -> s.length() < 4)
+            .filter(s -> s.contains("E"))
+            .limit(1)
+            .forEach(System.out::println);
+
+    words.stream()
+            .map(String::toUpperCase)
+            .filter(s -> s.length() < 4)
+            .filter(s -> s.contains("Q"))
+            .limit(1)
+            .forEach(System.out::println);
+
+
+    Optional<String> first = words.stream()
+            .map(String::toUpperCase)
+            .filter(s -> s.length() < 4)
+            .filter(s -> s.contains("Q"))
+            .findFirst();
+
+    first.ifPresent(System.out::println);
+
   }
 
 
